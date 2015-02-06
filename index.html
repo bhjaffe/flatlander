@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJS Part 1</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/bootstrap/bootstrap.min.css">
+  </head>
+  <!-- Declare our app on the page -->
+  <body ng-app="myApp" style="width: 95%; margin: auto;">
+      <div ng-controller="StoreController as store">
+        <div class="row">
+           <div ng-repeat="product in store.products">
+            <div class="col-sm-4 col-xs-12">
+            <div ng-hide="store.product.soldOut">
+                <h1>{{product.name}}</h1>
+                <h2>${{product.price/100}}</h2>
+                <button ng-show="product.canPurchase">Add to Cart</button>
+            </div>
+                <p></p>
+            <section ng-init="tab = 1">
+            <ul class="nav nav-pills">
+                <li ng-class="{active:tab === 1}"><a href ng-click="tab = 1">Description</a></li>
+                <li ng-class="{active:tab === 2}"><a href ng-click="tab = 2">Specifications</a></li>
+                <li ng-class="{active:tab === 3}"><a href ng-click="tab = 3">Reviews</a></li>
+            </ul>
+            <div class="panel" ng-show="tab === 1">
+                <h4>Description</h4>
+                <p>{{product.description}}</p>
+            </div>
+            <div class="panel" ng-show="tab === 2">
+                <h4>Specifications</h4>
+                <p>None yet</p>
+            </div>
+            <div class="panel" ng-show="tab === 3">
+                <h4>Reviews</h4>
+                <p>None yet</p>
+            </div>
+            </section>
+            </div>
+           </div>
+        </div>
+      </div>
+
+    <!-- Include our AngularJS platform files here. -->
+    <script src="scripts/angularjs/angular.js"></script>
+    <script src="scripts/angularjs/angular-route.js"></script>
+    <!-- Declare our Application and Routes -->
+    <script src="scripts/app.js"></script>
+    <!-- Include all supporting controllers, services, directives, and filters -->
+    <script src="scripts/controllers/demo.js"></script>
+    <script src="scripts/services/demo.js"></script>
+    <script src="scripts/services/tools.js"></script>
+    <!-- Include controllers, services, etc. to support routes -->
+    <script src="scripts/routes.js"></script>
+    <script src="scripts/controllers/demoRoute.js"></script>
+    <script src="scripts/controllers/demoRoute2.js"></script>
+    <!-- jquery -->
+    <script src="scripts/jquery/jquery-1.11.1.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="scripts/bootstrap/bootstrap.min.js"></script>
+    <!-- End of script includes. -->
+
+
+</body>
+</html>
